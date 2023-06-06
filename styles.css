@@ -1,0 +1,42 @@
+body {
+  background-color: aquamarine;
+}
+
+#btn {
+  font-size: large;
+}
+
+table {
+  border: 2px solid;
+   text-align: center;
+   margin-left: auto;
+   margin-right: auto;
+   background-color:blue ;
+   margin-top: 10px;
+   border-spacing: 20px;
+   
+}
+td
+{
+  width: 2cm;
+  height: 2cm;
+  border: 2px solid;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 2px;
+  background-color: white;
+}
+.title
+{
+  text-align: center;
+}
+
+.red {
+  background-color: red;
+}
+
+.yellow
+{
+  background-color: yellow;
+}
+
