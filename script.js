@@ -7,6 +7,7 @@ var redRow = 0;
 var yellowRow = 0;
 var redColumn = 0;
 var yellowColumn = 0;
+var ele1, ele2, ele3, ele4, ele21, ele31, ele41;
 var gameOver = false;
 const winMessage = document.getElementById('win');
 
@@ -149,7 +150,6 @@ function checkColumn() {
 
 function checkDiagonal() {
   const tds = document.querySelectorAll('td');
-  var ele1, ele2, ele3, ele4, ele21, ele31,ele41;
   
   for (i = 0; i < nRows; i++) {
 
@@ -212,6 +212,7 @@ function resetGame() {
   yellowColumn = 0;
   redRow = 0;
   yellowRow = 0;
+  ele1, ele2, ele3, ele4, ele21, ele31, ele41 = null;
   mainGame();
 }
 
