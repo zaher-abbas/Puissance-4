@@ -4,10 +4,8 @@ var table;
 var divGame;
 const nRows = 6;
 const nColumns = 7;
-var redRow = 0;
-var yellowRow = 0;
-var redColumn = 0;
-var yellowColumn = 0;
+var redCounter = 0;
+var yellowCounter = 0;
 var ele1, ele2, ele3, ele4, ele21, ele31, ele41;
 var gameOver = false;
 const winMessage = document.getElementById('win');
@@ -78,28 +76,28 @@ function checkRow() {
   const tds = document.querySelectorAll('td');
   var td;
   for (let i = 0; i < nRows; i++) {
-    redRow = 0;
-    yellowRow = 0;
+    redCounter = 0;
+    yellowCounter = 0;
     for (let j = 0; j < nColumns; j++) {
       tds.forEach(function (element) {
         if (element.id === `${i}${j}`)
           td = element;
       });
       if (td.classList.contains('red'))
-        redRow += 1;
+        redCounter += 1;
       else if (td.classList.contains('yellow'))
-        redRow = 0;
+        redCounter = 0;
       if (td.classList.contains('yellow'))
-        yellowRow += 1;
+        yellowCounter += 1;
       else if (td.classList.contains('red'))
-        yellowRow = 0;
+        yellowCounter = 0;
 
-      if (redRow === 4) {
+      if (redCounter === 4) {
         winMessage.innerText = "Congratulations, Player Red Wins!"
         winMessage.style.color = 'red';
         gameOver = true;
       }
-      if (yellowRow === 4) {
+      if (yellowCounter === 4) {
         winMessage.innerText = "Congratulations, Player Yellow Wins!";
         winMessage.style.color = 'yellow';
         gameOver = true;
@@ -115,28 +113,28 @@ function checkColumn() {
   const tds = document.querySelectorAll('td');
   var td;
   for (let i = 0; i < nColumns; i++) {
-    redColumn = 0;
-    yellowColumn = 0;
+    redCounter = 0;
+    yellowCounter = 0;
     for (let j = 0; j < nRows; j++) {
       tds.forEach(function (element) {
         if (element.id === `${j}${i}`)
           td = element;
       });
       if (td.classList.contains('red'))
-        redColumn += 1;
+        redCounter += 1;
       else if (td.classList.contains('yellow'))
-        redColumn = 0;
+        redCounter = 0;
       if (td.classList.contains('yellow'))
-        yellowColumn += 1;
+        yellowCounter += 1;
       else if (td.classList.contains('red'))
-        yellowColumn = 0;
+        yellowCounter = 0;
 
-      if (redColumn === 4) {
+      if (redCounter === 4) {
         winMessage.innerText = "Congratulations, Player Red Wins!";
         winMessage.style.color = 'red';
         gameOver = true;
       }
-      if (yellowColumn === 4) {
+      if (yellowCounter === 4) {
         winMessage.innerText = "Congratulations, Player Yellow Wins!";
         winMessage.style.color = 'yellow';
         gameOver = true;
@@ -209,10 +207,8 @@ function resetGame() {
   if (!currentTurn) currentTurn = 'Red';
   gameOver = false;
   winMessage.innerText = "";
-  redColumn = 0;
-  yellowColumn = 0;
-  redRow = 0;
-  yellowRow = 0;
+  redCounter = 0;
+  yellowCounter = 0;
   ele1, ele2, ele3, ele4, ele21, ele31, ele41 = null;
   mainGame();
 }
