@@ -94,12 +94,11 @@ function checkRow() {
         yellowRow = 0;
 
       if (redRow === 4) {
-        winMessage.innerText = "Player Red Wins!";
-        winMessage.style.color = 'red';
+        winMessage.innerText = "Congratulations, Player Red Wins!"
         gameOver = true;
       }
       if (yellowRow === 4) {
-        winMessage.innerText = "Player Yellow Wins!";
+        winMessage.innerText = "Congratulations, Player Yellow Wins!";
         winMessage.style.color = 'yellow';
         gameOver = true;
       }
@@ -131,12 +130,12 @@ function checkColumn() {
         yellowColumn = 0;
 
       if (redColumn === 4) {
-        winMessage.innerText = "Player Red Wins!";
+        winMessage.innerText = "Congratulations, Player Red Wins!";
         winMessage.style.color = 'red';
         gameOver = true;
       }
       if (yellowColumn === 4) {
-        winMessage.innerText = "Player Yellow Wins!";
+        winMessage.innerText = "Congratulations, Player Yellow Wins!";
         winMessage.style.color = 'yellow';
         gameOver = true;
       }
@@ -174,23 +173,23 @@ function checkDiagonal() {
       )
 
       if (ele1.classList.contains('red') && ele2.classList.contains('red') && ele3.classList.contains('red') && ele4.classList.contains('red')) {
-        winMessage.innerText = "Player Red Wins!";
+        winMessage.innerText = "Congratulations, Player Red Wins!";
         winMessage.style.color = 'red';
         gameOver = true;
       }
       else if (ele1.classList.contains('yellow') && ele2.classList.contains('yellow') && ele3.classList.contains('yellow') && ele4.classList.contains('yellow')) {
-        winMessage.innerText = "Player Yellow Wins!";
+        winMessage.innerText = "Congratulations, Player Yellow Wins!";
         winMessage.style.color = 'yellow';
         gameOver = true;
       }
 
       if (ele1.classList.contains('red') && ele21.classList.contains('red') && ele31.classList.contains('red') && ele41.classList.contains('red')) {
-        winMessage.innerText = "Player Red Wins!";
+        winMessage.innerText = "Congratulations, Player Red Wins!";
         winMessage.style.color = 'red';
         gameOver = true;
       }
       else if (ele1.classList.contains('yellow') && ele21.classList.contains('yellow') && ele31.classList.contains('yellow') && ele41.classList.contains('yellow')) {
-        winMessage.innerText = "Player Yellow Wins!";
+        winMessage.innerText = "Congratulations, Player Yellow Wins!";
         winMessage.style.color = 'yellow';
         gameOver = true;
       }
