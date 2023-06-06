@@ -1,4 +1,5 @@
 var currentTurn = prompt('Choose Yellow or Red:');
+if (!currentTurn) currentTurn = 'Red';
 var table;
 var divGame;
 const nRows = 6;
@@ -11,10 +12,10 @@ var ele1, ele2, ele3, ele4, ele21, ele31, ele41;
 var gameOver = false;
 const winMessage = document.getElementById('win');
 
-const btnReset = document.getElementById("btn");
-btnReset.addEventListener('click', resetGame)
+const btnResetGame = document.getElementById("btn");
+btnResetGame.addEventListener('click', resetGame)
 
-function generateTable(nRows, nColumns) {
+function generateGameTable(nRows, nColumns) {
   table = document.createElement('table');
   divGame = document.getElementById('game');
   divGame.appendChild(table);
@@ -95,6 +96,7 @@ function checkRow() {
 
       if (redRow === 4) {
         winMessage.innerText = "Congratulations, Player Red Wins!"
+        winMessage.style.color = 'red';
         gameOver = true;
       }
       if (yellowRow === 4) {
@@ -139,7 +141,6 @@ function checkColumn() {
         winMessage.style.color = 'yellow';
         gameOver = true;
       }
-
 
     }
 
@@ -205,6 +206,7 @@ function resetGame() {
     element.classList.remove('red');
   });
   currentTurn = prompt('Choose Yellow or Red:');
+  if (!currentTurn) currentTurn = 'Red';
   gameOver = false;
   winMessage.innerText = "";
   redColumn = 0;
@@ -215,5 +217,5 @@ function resetGame() {
   mainGame();
 }
 
-generateTable(nRows, nColumns);
+generateGameTable(nRows, nColumns);
 mainGame();
