@@ -1,21 +1,20 @@
 var currentTurn = prompt('Choose Yellow or Red:');
 if (!currentTurn) currentTurn = 'Red';
-var table;
-var divGame;
 const nRows = 6;
 const nColumns = 7;
 var redCounter = 0;
 var yellowCounter = 0;
-var ele1, ele2, ele3, ele4, ele21, ele31, ele41;
 var gameOver = false;
+var ele1, ele2, ele3, ele4, ele21, ele31, ele41;
+
 const winMessage = document.getElementById('win');
 
 const btnResetGame = document.getElementById("btn");
 btnResetGame.addEventListener('click', resetGame)
 
 function generateGameTable(nRows, nColumns) {
-  table = document.createElement('table');
-  divGame = document.getElementById('game');
+  const table = document.createElement('table');
+  const divGame = document.getElementById('game');
   divGame.appendChild(table);
   for (var i = 0; i < nRows; i++) {
     const tr = document.createElement('tr');
