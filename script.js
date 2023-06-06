@@ -1,4 +1,4 @@
-var currentTurn = prompt('Player 1, choose Yellow or Red:');
+var currentTurn = prompt('Choose Yellow or Red:');
 var table;
 var divGame;
 const nRows = 6;
