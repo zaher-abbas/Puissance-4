@@ -1,4 +1,4 @@
-alert("Bienvenue à Puissance 4 le jeu!")
+alert("Welcome to Connect 4 the game!")
 var currentTurn = prompt('Player 1, choose Yellow or Red:');
 var table;
 var divGame;
@@ -9,6 +9,10 @@ var yellowRow = 0;
 var redColumn = 0;
 var yellowColumn = 0;
 var gameOver = false;
+const winMessage = document.getElementById('win');
+
+const btnReset = document.getElementById("btn");
+btnReset.addEventListener('click', resetGame)
 
 function generateTable(nRows, nColumns) {
   table = document.createElement('table');
@@ -55,6 +59,7 @@ function jetonTurn(event) {
     currentTurn = 'Yellow';
     checkRow();
     checkColumn();
+    checkDiagonal();
   }
   else if (currentTurn === 'Yellow' && (newTdElement.classList.contains("red") || newTdElement.classList.contains("yellow") || event.target.id.slice(0, 1) === '5')) {
     event.target.classList.add('yellow');
@@ -62,6 +67,7 @@ function jetonTurn(event) {
     currentTurn = 'Red';
     checkRow();
     checkColumn();
+    checkDiagonal();
   }
 
 
@@ -87,17 +93,15 @@ function checkRow() {
       else if (td.classList.contains('red'))
         yellowRow = 0;
 
-      if (redRow === 4)
-      {
-      document.querySelector('h2').innerText = "Player Red Wins!";
-      document.querySelector('h2').style.color = 'red';
-      gameOver = true;
+      if (redRow === 4) {
+        winMessage.innerText = "Player Red Wins!";
+        winMessage.style.color = 'red';
+        gameOver = true;
       }
-      if (yellowRow === 4)
-      {
-      document.querySelector('h2').innerText = "Player Yellow Wins!";
-      document.querySelector('h2').style.color = 'yellow';
-      gameOver = true;
+      if (yellowRow === 4) {
+        winMessage.innerText = "Player Yellow Wins!";
+        winMessage.style.color = 'yellow';
+        gameOver = true;
       }
 
     }
@@ -126,17 +130,15 @@ function checkColumn() {
       else if (td.classList.contains('red'))
         yellowColumn = 0;
 
-      if (redColumn === 4)
-      {
-        document.querySelector('h2').innerText = "Player Red Wins!";
-        document.querySelector('h2').style.color = 'red';
+      if (redColumn === 4) {
+        winMessage.innerText = "Player Red Wins!";
+        winMessage.style.color = 'red';
         gameOver = true;
       }
-      if (yellowColumn === 4)
-      {
-      document.querySelector('h2').innerText = "Player Yellow Wins!";
-      document.querySelector('h2').style.color = 'yellow';
-      gameOver = true;
+      if (yellowColumn === 4) {
+        winMessage.innerText = "Player Yellow Wins!";
+        winMessage.style.color = 'yellow';
+        gameOver = true;
       }
 
 
@@ -146,11 +148,44 @@ function checkColumn() {
 
 }
 
-const btn = document.getElementById("btn");
-btn.addEventListener('click', resetGame)
+function checkDiagonal() {
+  const tds = document.querySelectorAll('td');
+  var ele1;
+  var ele2;
+  var ele3;
+  var ele4;
+  for (i = 0; i < nRows; i++) {
 
-function resetGame()
-{
+    for (j = 0; j < nColumns; j++) {
+      tds.forEach(function (element) {
+        if (element.id === `${i}${j}`)
+          ele1 = element
+        else if (element.id === `${i - 1}${j + 1}`)
+          ele2 = element;
+        else if (element.id === `${i - 2}${j + 2}`)
+          ele3 = element;
+        else if (element.id === `${i - 3}${j + 3}`)
+          ele4 = element;
+      }
+
+      )
+
+      if (ele1.classList.contains('red') && ele2.classList.contains('red') && ele3.classList.contains('red') && ele4.classList.contains('red')) {
+        winMessage.innerText = "Player Red Wins!";
+        winMessage.style.color = 'red';
+        gameOver = true;
+      }
+      else if (ele1.classList.contains('yellow') && ele2.classList.contains('yellow') && ele3.classList.contains('yellow') && ele4.classList.contains('yellow')) {
+        winMessage.innerText = "Player Yellow Wins!";
+        winMessage.style.color = 'yellow';
+        gameOver = true;
+      }
+    }
+  }
+}
+
+
+function resetGame() {
   const tds = document.querySelectorAll("td");
   tds.forEach(function (element) {
     element.classList.remove('yellow');
@@ -158,7 +193,7 @@ function resetGame()
   });
   currentTurn = prompt('Player 1, choose Yellow or Red:');
   gameOver = false;
-  document.querySelector('h2').innerText = "";
+  winMessage.innerText = "";
   redColumn = 0;
   yellowColumn = 0;
   redRow = 0;
