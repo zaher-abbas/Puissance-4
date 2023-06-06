@@ -1,4 +1,3 @@
-alert("Welcome to Connect 4 the game!")
 var currentTurn = prompt('Player 1, choose Yellow or Red:');
 var table;
 var divGame;
