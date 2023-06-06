@@ -10,7 +10,7 @@ var ele1, ele2, ele3, ele4, ele21, ele31, ele41;
 const winMessage = document.getElementById('win');
 
 const btnResetGame = document.getElementById("btn");
-btnResetGame.addEventListener('click', resetGame)
+btnResetGame.addEventListener('click', resetGame);
 
 function generateGameTable(nRows, nColumns) {
   const table = document.createElement('table');
@@ -30,38 +30,38 @@ function generateGameTable(nRows, nColumns) {
 function mainGame() {
   const tds = document.querySelectorAll("td");
 
-  tds.forEach(function (element) {
+  tds.forEach(function(td) {
 
-    element.addEventListener('click', jetonTurn);
-
+    td.addEventListener('click', jetonTurn);
 
   });
 }
 
 function jetonTurn(event) {
   if (gameOver) return;
-  var id = event.target.id;
+  const currentTd = event.target;
+  var id = currentTd.id;
   var rowNumber = id.slice(0, 1);
   rowNumber = parseInt(rowNumber);
   rowNumber += 1;
   if (rowNumber === 6) rowNumber = 5;
   const columnNumber = id.slice(1, 2);
   const newId = `${rowNumber}${columnNumber}`;
-  const newTdElement = document.getElementById(newId);
+  const bottomTdElement = document.getElementById(newId);
 
 
-  if (currentTurn === 'Red' && (newTdElement.classList.contains("red") || newTdElement.classList.contains("yellow") || event.target.id.slice(0, 1) === '5')) {
-    event.target.classList.add('red');
-    event.target.innerText = "";
-    event.target.removeEventListener('click', jetonTurn);
+  if (currentTurn === 'Red' && (bottomTdElement.classList.contains("red") || bottomTdElement.classList.contains("yellow") || currentTd.id.slice(0, 1) === '5')) {
+    currentTd.classList.add('red');
+    currentTd.innerText = "";
+    currentTd.removeEventListener('click', jetonTurn);
     currentTurn = 'Yellow';
     checkRow();
     checkColumn();
     checkDiagonal();
   }
-  else if (currentTurn === 'Yellow' && (newTdElement.classList.contains("red") || newTdElement.classList.contains("yellow") || event.target.id.slice(0, 1) === '5')) {
-    event.target.classList.add('yellow');
-    event.target.removeEventListener('click', jetonTurn);
+  else if (currentTurn === 'Yellow' && (bottomTdElement.classList.contains("red") || bottomTdElement.classList.contains("yellow") || currentTd.id.slice(0, 1) === '5')) {
+    currentTd.classList.add('yellow');
+    currentTd.removeEventListener('click', jetonTurn);
     currentTurn = 'Red';
     checkRow();
     checkColumn();
