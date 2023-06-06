@@ -1,4 +1,4 @@
-alert("Bienvenue à Puissance 4 le jeu!")
+alert("Bienvenue à Puissance 4 le jeu!!")
 var currentTurn = prompt('Player 1, choose Yellow or Red:');
 var table;
 var divGame;
