@@ -205,7 +205,7 @@ function resetGame() {
     element.classList.remove('yellow');
     element.classList.remove('red');
   });
-  currentTurn = prompt('Player 1, choose Yellow or Red:');
+  currentTurn = prompt('Choose Yellow or Red:');
   gameOver = false;
   winMessage.innerText = "";
   redColumn = 0;
