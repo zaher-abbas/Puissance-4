@@ -149,22 +149,26 @@ function checkColumn() {
 
 function checkDiagonal() {
   const tds = document.querySelectorAll('td');
-  var ele1;
-  var ele2;
-  var ele3;
-  var ele4;
+  var ele1, ele2, ele3, ele4, ele21, ele31,ele41;
+  
   for (i = 0; i < nRows; i++) {
 
     for (j = 0; j < nColumns; j++) {
       tds.forEach(function (element) {
         if (element.id === `${i}${j}`)
           ele1 = element
-        else if (element.id === `${i - 1}${j + 1}`)
+        if (element.id === `${i - 1}${j + 1}`)
           ele2 = element;
-        else if (element.id === `${i - 2}${j + 2}`)
+         if (element.id === `${i - 1}${j - 1}`)
+          ele21 = element;
+        if (element.id === `${i - 2}${j + 2}`)
           ele3 = element;
-        else if (element.id === `${i - 3}${j + 3}`)
+         if (element.id === `${i - 2}${j - 2}`)
+          ele31 = element;
+        if (element.id === `${i - 3}${j + 3}`)
           ele4 = element;
+         if (element.id === `${i - 3}${j - 3}`)
+        ele41 = element;
       }
 
       )
@@ -175,6 +179,17 @@ function checkDiagonal() {
         gameOver = true;
       }
       else if (ele1.classList.contains('yellow') && ele2.classList.contains('yellow') && ele3.classList.contains('yellow') && ele4.classList.contains('yellow')) {
+        winMessage.innerText = "Player Yellow Wins!";
+        winMessage.style.color = 'yellow';
+        gameOver = true;
+      }
+
+      if (ele1.classList.contains('red') && ele21.classList.contains('red') && ele31.classList.contains('red') && ele41.classList.contains('red')) {
+        winMessage.innerText = "Player Red Wins!";
+        winMessage.style.color = 'red';
+        gameOver = true;
+      }
+      else if (ele1.classList.contains('yellow') && ele21.classList.contains('yellow') && ele31.classList.contains('yellow') && ele41.classList.contains('yellow')) {
         winMessage.innerText = "Player Yellow Wins!";
         winMessage.style.color = 'yellow';
         gameOver = true;
