@@ -58,6 +58,7 @@ function jetonTurn(event) {
     checkRow();
     checkColumn();
     checkDiagonal();
+    checkTableFull();
   }
   else if (currentTurn === 'Yellow' && (bottomTdElement.classList.contains("red") || bottomTdElement.classList.contains("yellow") || currentTd.id.slice(0, 1) === '5')) {
     currentTd.classList.add('yellow');
@@ -66,8 +67,24 @@ function jetonTurn(event) {
     checkRow();
     checkColumn();
     checkDiagonal();
+    checkTableFull();
   }
 
+
+  function checkTableFull() {
+    var counter = 0;
+    const tds = document.querySelectorAll('td');
+    tds.forEach(function (td) {
+      if (td.classList.contains('yellow') || td.classList.contains('red'))
+        counter += 1;
+
+    })
+    if (counter === (nColumns * nRows)) {
+      alert("Game Over! No one wins, please Restart the game!");
+      gameOver = true;
+    }
+
+  }
 
 }
 
@@ -82,14 +99,23 @@ function checkRow() {
         if (element.id === `${i}${j}`)
           td = element;
       });
+
       if (td.classList.contains('red'))
         redCounter += 1;
+
       else if (td.classList.contains('yellow'))
         redCounter = 0;
+
       if (td.classList.contains('yellow'))
         yellowCounter += 1;
+
       else if (td.classList.contains('red'))
         yellowCounter = 0;
+
+      if (!td.classList.contains('red') && !td.classList.contains('yellow')) {
+        yellowCounter = 0;
+        redCounter = 0;
+      }
 
       if (redCounter === 4) {
         winMessage.innerText = "Congratulations, Player Red Wins!"
@@ -119,12 +145,16 @@ function checkColumn() {
         if (element.id === `${j}${i}`)
           td = element;
       });
+
       if (td.classList.contains('red'))
         redCounter += 1;
+
       else if (td.classList.contains('yellow'))
         redCounter = 0;
+
       if (td.classList.contains('yellow'))
         yellowCounter += 1;
+        
       else if (td.classList.contains('red'))
         yellowCounter = 0;
 
@@ -151,16 +181,20 @@ function checkDiagonal() {
   for (i = 0; i < nRows; i++) {
     ele1, ele2, ele3, ele4, ele21, ele31, ele41 = null;
     for (j = 0; j < nColumns; j++) {
-      tds.forEach(function (element) {
-        if (element.id === `${i}${j}`) {
-          ele1 = element
+      tds.forEach(function (td) {
+        if (td.id === `${i}${j}`) {
+          ele1 = td;
+
           ele2 = document.getElementById(`${i - 1}${j + 1}`);
 
           ele21 = document.getElementById(`${i - 1}${j - 1}`);
 
           ele3 = document.getElementById(`${i - 2}${j + 2}`);
+
           ele31 = document.getElementById(`${i - 2}${j - 2}`);
+
           ele4 = document.getElementById(`${i - 3}${j + 3}`);
+
           ele41 = document.getElementById(`${i - 3}${j - 3}`);
 
           if (ele1.classList.contains('red') && ele2 && ele2.classList.contains('red') && ele3 && ele3.classList.contains('red') && ele4 && ele4.classList.contains('red')) {
@@ -195,9 +229,9 @@ function checkDiagonal() {
 
 function resetGame() {
   const tds = document.querySelectorAll("td");
-  tds.forEach(function (element) {
-    element.classList.remove('yellow');
-    element.classList.remove('red');
+  tds.forEach(function (td) {
+    td.classList.remove('yellow');
+    td.classList.remove('red');
   });
   alert("Welcome to Connect 4, player Red starts the game!");
   currentTurn = 'Red';
