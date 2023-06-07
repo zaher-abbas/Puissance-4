@@ -30,7 +30,7 @@ function generateGameTable(nRows, nColumns) {
 function mainGame() {
   const tds = document.querySelectorAll("td");
 
-  tds.forEach(function(td) {
+  tds.forEach(function (td) {
 
     td.addEventListener('click', jetonTurn);
 
@@ -147,50 +147,46 @@ function checkColumn() {
 
 function checkDiagonal() {
   const tds = document.querySelectorAll('td');
-  
-  for (i = 0; i < nRows; i++) {
 
+  for (i = 0; i < nRows; i++) {
+    ele1, ele2, ele3, ele4, ele21, ele31, ele41 = null;
     for (j = 0; j < nColumns; j++) {
       tds.forEach(function (element) {
-        if (element.id === `${i}${j}`)
+        if (element.id === `${i}${j}`) {
           ele1 = element
-        if (element.id === `${i - 1}${j + 1}`)
-          ele2 = element;
-         if (element.id === `${i - 1}${j - 1}`)
-          ele21 = element;
-        if (element.id === `${i - 2}${j + 2}`)
-          ele3 = element;
-         if (element.id === `${i - 2}${j - 2}`)
-          ele31 = element;
-        if (element.id === `${i - 3}${j + 3}`)
-          ele4 = element;
-         if (element.id === `${i - 3}${j - 3}`)
-        ele41 = element;
-      }
+          ele2 = document.getElementById(`${i - 1}${j + 1}`);
 
-      )
+          ele21 = document.getElementById(`${i - 1}${j - 1}`);
 
-      if (ele1.classList.contains('red') && ele2.classList.contains('red') && ele3.classList.contains('red') && ele4.classList.contains('red')) {
-        winMessage.innerText = "Congratulations, Player Red Wins!";
-        winMessage.style.color = 'red';
-        gameOver = true;
-      }
-      else if (ele1.classList.contains('yellow') && ele2.classList.contains('yellow') && ele3.classList.contains('yellow') && ele4.classList.contains('yellow')) {
-        winMessage.innerText = "Congratulations, Player Yellow Wins!";
-        winMessage.style.color = 'yellow';
-        gameOver = true;
-      }
+          ele3 = document.getElementById(`${i - 2}${j + 2}`);
+          ele31 = document.getElementById(`${i - 2}${j - 2}`);
+          ele4 = document.getElementById(`${i - 3}${j + 3}`);
+          ele41 = document.getElementById(`${i - 3}${j - 3}`);
+          if (ele1.classList.contains('red') && ele2 && ele2.classList.contains('red') && ele3 && ele3.classList.contains('red') && ele4 && ele4.classList.contains('red')) {
+            winMessage.innerText = "Congratulations, Player Red Wins!";
+            winMessage.style.color = 'red';
+            gameOver = true;
+          }
+          else if (ele1.classList.contains('yellow') && ele2 && ele2.classList.contains('yellow') && ele3 && ele3.classList.contains('yellow') && ele4 && ele4.classList.contains('yellow')) {
+            winMessage.innerText = "Congratulations, Player Yellow Wins!";
+            winMessage.style.color = 'yellow';
+            gameOver = true;
+          }
 
-      if (ele1.classList.contains('red') && ele21.classList.contains('red') && ele31.classList.contains('red') && ele41.classList.contains('red')) {
-        winMessage.innerText = "Congratulations, Player Red Wins!";
-        winMessage.style.color = 'red';
-        gameOver = true;
-      }
-      else if (ele1.classList.contains('yellow') && ele21.classList.contains('yellow') && ele31.classList.contains('yellow') && ele41.classList.contains('yellow')) {
-        winMessage.innerText = "Congratulations, Player Yellow Wins!";
-        winMessage.style.color = 'yellow';
-        gameOver = true;
-      }
+          if (ele1.classList.contains('red') && ele21 && ele21.classList.contains('red') && ele31 && ele31.classList.contains('red') && ele41 && ele41.classList.contains('red')) {
+            winMessage.innerText = "Congratulations, Player Red Wins!";
+            winMessage.style.color = 'red';
+            gameOver = true;
+          }
+          else if (ele1.classList.contains('yellow') && ele21 && ele21.classList.contains('yellow') && ele31 && ele31.classList.contains('yellow') && ele41 && ele41.classList.contains('yellow')) {
+            winMessage.innerText = "Congratulations, Player Yellow Wins!";
+            winMessage.style.color = 'yellow';
+            gameOver = true;
+
+          }
+        }
+
+      })
     }
   }
 }
