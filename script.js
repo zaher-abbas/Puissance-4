@@ -1,5 +1,5 @@
-var currentTurn = prompt('Choose Yellow or Red:');
-if (!currentTurn) currentTurn = 'Red';
+alert("Welcome to Connect 4, player Red starts the game!");
+var currentTurn = 'Red';
 const nRows = 6;
 const nColumns = 7;
 var redCounter = 0;
@@ -162,6 +162,7 @@ function checkDiagonal() {
           ele31 = document.getElementById(`${i - 2}${j - 2}`);
           ele4 = document.getElementById(`${i - 3}${j + 3}`);
           ele41 = document.getElementById(`${i - 3}${j - 3}`);
+
           if (ele1.classList.contains('red') && ele2 && ele2.classList.contains('red') && ele3 && ele3.classList.contains('red') && ele4 && ele4.classList.contains('red')) {
             winMessage.innerText = "Congratulations, Player Red Wins!";
             winMessage.style.color = 'red';
@@ -198,8 +199,8 @@ function resetGame() {
     element.classList.remove('yellow');
     element.classList.remove('red');
   });
-  currentTurn = prompt('Choose Yellow or Red:');
-  if (!currentTurn) currentTurn = 'Red';
+  alert("Welcome to Connect 4, player Red starts the game!");
+  currentTurn = 'Red';
   gameOver = false;
   winMessage.innerText = "";
   redCounter = 0;
