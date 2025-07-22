@@ -1,2 +1,1 @@
-Le jeu célèbre Puissance 4 développé en html, CSS, et javascript, pendant la formation "Developpeur Angular" au sein de Wild Code School.
-
+Ce jeu, Puissance 4, a été développé en HTML, CSS et JavaScript dans le cadre de la formation « Développeur Angular » au sein de Wild Code School.
