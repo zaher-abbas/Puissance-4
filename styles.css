@@ -51,7 +51,8 @@ td {
 
 #win {
     text-align: center;
-    padding: 1rem;
+    padding: 1.5rem;
     width: 43%;
     margin: 1rem auto;
+    border-radius: 10px;
 }
